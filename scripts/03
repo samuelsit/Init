@@ -1,0 +1,66 @@
+#!/bin/sh
+if test -n "$1" && test -n "$2"
+	then
+		echo "Create $1 folder"
+		mkdir $1
+		sleep 0.25
+		cd $1
+		echo "Create srcs folder"
+		mkdir srcs
+		sleep 0.25
+		echo "Create includes folder"
+		mkdir includes
+		sleep 0.25
+		echo "Create lib folder"
+		mkdir lib
+		sleep 0.25
+		echo "Create auteur file with $2 as name"
+		echo $2 > auteur
+		sleep 0.25
+		echo "Create Makefile"
+		echo "SRC		=
+
+CC		=	gcc
+
+NAME	=	$1
+
+LIB		=	-Llibft -lft
+
+CFLAGS	=	-Wall -Wextra -Werror
+
+RM		=	rm -f
+
+OBJ		=	\$(SRC:.c=.o)
+
+all:		\$(NAME)
+
+\$(NAME):	\$(OBJ)
+			make -C libft
+			\$(CC) -o \$(NAME) \$(OBJ) \$(LIB) \$(CFLAGS)
+
+clean:
+			\$(RM) \$(OBJ)
+			make clean -C libft
+
+fclean:		clean
+			make fclean -C libft
+			\$(RM) \$(NAME)
+
+re:			fclean all
+
+.PHONY:		all clean fclean re" > Makefile
+		sleep 0.25
+		echo "Create $1.h file in includes folder"
+		cd includes
+		echo "#ifndef $1_H
+# define $1_H
+
+#endif" > $1.h
+		sleep 0.25
+		echo "BE CAREFUL :"
+		echo "- You have to add the 42 header to be at the norme !"
+		echo "- You have to change the $1_H to uppercase !"
+	else
+		echo "Missing parameters"
+		echo "usage: sh 03 foldername username"
+fi

@@ -1,0 +1,1 @@
+Le fichier ou se situe la version installee du Debian est issue, pour y acceder epuis la VM : cat /etc/issue

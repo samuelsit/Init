@@ -1,0 +1,14 @@
+apparmor
+avahi-daemon
+cron
+cups
+cups-browsed
+dbus
+kmod
+networking
+procps
+rsyslog
+ssh
+udev
+
+commande: service --status-all | grep + | awk '{print $4}'

@@ -1,0 +1,3 @@
+Il faut ajouter une ligne au fichier /etc/hosts.
+
+Ou en ligne de commande : echo "46.19.122.58	intra.42.fr" >> /etc/hosts
